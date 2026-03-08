@@ -1,22 +1,35 @@
-#!/usr/bin/env tclsh
-proc xor {a b} {
-	return [expr $a ^ $b]
+#!/usr/bin/env wish
+set title {Dragons!}
+set dragons {
+	a
+	b
+	c
 }
-if false {
-	puts "argc: $argc"
-	puts "argv: $argv"
-	puts {}
-}
-if [expr $argc >= 2] {
-	set a [lindex "$argv" 0]
-	set b [lindex "$argv" 1]
-	if [expr $a ^ $b] {
-		global a
-		global b
-		puts "xor($a, $b)"
-	} else {
-		global a
-		global b
-		puts "!xor($a, $b)"
-	}
+wm attributes . \
+	-fullscreen 1
+wm title . $title
+pack [label .title \
+	-background silver \
+	-text $title \
+	-relief ridge \
+	-borderwidth 3
+] \
+	-fill x
+pack \
+	[button .quit \
+		-text {Quit} \
+		-command {destroy .}
+	] \
+	-side right \
+	-anchor n
+set i 0
+foreach d $dragons {
+	pack [label .d$i \
+		-background silver \
+		-text $d \
+		-relief ridge \
+		-borderwidth 3
+	] \
+		-anchor w
+	set i [expr $i + 1]
 }
