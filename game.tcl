@@ -5,16 +5,14 @@ set dragons {
 	b
 	c
 }
-wm attributes . \
-	-fullscreen 1
+wm attributes . -fullscreen 1
 wm title . $title
 pack [label .title \
 	-background silver \
 	-text $title \
 	-relief ridge \
 	-borderwidth 3
-] \
-	-fill x
+] -fill x
 pack \
 	[button .quit \
 		-text {Quit} \
@@ -29,7 +27,6 @@ foreach d $dragons {
 		-text $d \
 		-relief ridge \
 		-borderwidth 3
-	] \
-		-anchor w
+	] -anchor w
 	set i [expr $i + 1]
 }
